@@ -187,8 +187,6 @@
                   }],
                   ['mips_arch_variant=="loongson"', {
                     'cflags': ['-mips3', '-Wa,-mips3'],
-                  }, {
-                    'cflags': ['-mips32', '-Wa,-mips32'],
                   }],
                 ],
               }],
@@ -291,7 +289,7 @@
           }],
           ['_toolset=="target"', {
             'variables': {
-              'm32flag': '<!((echo | $(echo ${CXX_target:-${CXX:-$(which g++)}}) -m32 -E - > /dev/null 2>&1) && echo -n "-m32" || true)',
+              'm32flag': '<!((echo | $(echo ${CXX_target:-${CXX:-$(which g++)}}) -m32 -E - > /dev/null 2>&1) && echo -n "-m32" || echo "")',
             },
             'cflags': [ '<(m32flag)' ],
             'ldflags': [ '<(m32flag)' ],
